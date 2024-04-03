@@ -75,7 +75,7 @@ func InitVulns() []VulnItem {
 	isPlCgi := "<input [^>]*accept=\".*(\\.pl|cgi-bin\\/\\*)"
 	isImage := "<input [^>]*accept=\".*image\\/\\*"
 	isXmlSvg := "<input [^>]*accept=\".*(application/xml|\\.xml|image/svg|\\.svg)"
-	isFile := "<input [^>]*type=\"file\"" // фикси с файлом разрешенным
+	isFile := "<input [^>]*type=\"file\""
 	isAcceptedFile := "<input [^>]*type=\"file\".*accept=\""
 	isMedia := "<(img|audio|video) [^>]*src=\".+\\?.+="
 	isHidden := "<input [^>]*type=\"hidden\""
@@ -83,22 +83,19 @@ func InitVulns() []VulnItem {
 	isDevFiles := "<(a|link|area) [^>]*href=\".+\\?.+=(\\.git)" // add files yet
 	isAdmin := "<(a|link|area) [^>]*href=\"https?://.+/(admin|administrator)"
 	isAsync := "<script [^>]*(defer|async)"
-	//isExtension := ""
-	//isCategory := ""
 
-	return []VulnItem{InitVulnItem("high (SQLi), low (Command injection)", isNumber), //isCategory),
-		InitVulnItem("high (Code injection)", isNumber),
-		InitVulnItem("low (SQLi)", isXmlJson),
-		InitVulnItem("high (Command injection)", isPlCgi),
-		InitVulnItem("low (XXE)", isImage),
-		InitVulnItem("high (XXE)", isXmlSvg),
-		InitVulnItem("high (SSRF)", isLocalhostIP),
-		InitVulnItem("high (File upload)", isFile),
-		InitVulnItem("low (File upload)", isAcceptedFile),
-		InitVulnItem("high (Path traversal)", isMedia),
-		InitVulnItem("high (Information disclosure)", isHidden, isDevFiles, isComment),
-		InitVulnItem("high (Access control)", isNumber, isAdmin),
-		InitVulnItem("high (Race conditions)", isAsync),
-		//InitVulnItem("high (SQLi)", isExtension),
+	return []VulnItem{InitVulnItem("SQLi, Command injection", isNumber),
+		InitVulnItem("Code injection", isNumber),
+		InitVulnItem("SQLi", isXmlJson),
+		InitVulnItem("Command injection", isPlCgi),
+		InitVulnItem("XXE", isImage),
+		InitVulnItem("XXE", isXmlSvg),
+		InitVulnItem("SSRF", isLocalhostIP),
+		InitVulnItem("File upload", isFile),
+		InitVulnItem("File upload", isAcceptedFile),
+		InitVulnItem("Path traversal", isMedia),
+		InitVulnItem("Information disclosure", isHidden, isDevFiles, isComment),
+		InitVulnItem("Access control", isNumber, isAdmin),
+		InitVulnItem("Race conditions", isAsync),
 	}
 }
