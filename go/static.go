@@ -21,22 +21,22 @@ const (
 	IsMedia        = "<(img|audio|video) [^>]*src=\".+\\?.+="
 	IsHidden       = "<input [^>]*type=\"hidden\""
 	IsComment      = "<!--.+-->"
-	IsDevFiles     = "<(a|link|area) [^>]*href=\".+\\?.+=(\\.git)" // add files yet
+	IsDevFiles     = "<(a|link|area) [^>]*href=\".+\\?.+=(\\.git)"
 	IsAdmin        = "<(a|link|area) [^>]*href=\"https?://.+/(admin|adminIstrator)"
 	IsScrypt       = `<script([\s\S]*?)</script>`
 	IsSRC          = `<script.*src="(.*?[^\n])"`
 )
 
 var (
-	StaticVulns = []VulnItem{InitVulnItem("Command injection", IsNumber, IsPlCgi),
-		InitVulnItem("Code injection", IsNumber),
-		InitVulnItem("SQLi", IsXmlJson, IsNumber),
-		InitVulnItem("XXE", IsImage, IsXmlSvg),
-		InitVulnItem("SSRF", IsLocalhostIP),
-		InitVulnItem("File upload", IsFile, IsAcceptedFile),
-		InitVulnItem("Path traversal", IsMedia),
-		InitVulnItem("Information dIsclosure", IsHidden, IsDevFiles, IsComment),
-		InitVulnItem("Access control", IsNumber, IsAdmin),
+	Static = []string{("Command injection", IsNumber, IsPlCgi),
+		("Code injection", IsNumber),
+		("SQLi", IsXmlJson, IsNumber),
+		("XXE", IsImage, IsXmlSvg),
+		("SSRF", IsLocalhostIP),
+		("File upload", IsFile, IsAcceptedFile),
+		("Path traversal", IsMedia),
+		("Information dIsclosure", IsHidden, IsDevFiles, IsComment),
+		("Access control", IsNumber, IsAdmin),
 	}
 )
 

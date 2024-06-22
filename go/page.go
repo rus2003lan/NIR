@@ -6,10 +6,6 @@ import (
 	"os"
 )
 
-type VulnItem struct {
-	name    string
-	regexps []string
-}
 
 type Page struct {
 	url string

@@ -1,0 +1,4 @@
+get / {'query-builder-test': []}
+post /search/feedback {'authenticity_token': [], 'include_email': []}
+post /search/custom_scopes {'authenticity_token': [], 'custom_scope_id': [], 'custom_scope_name': [], 'custom_scope_query': []}
+post /settings/blocked_users {'authenticity_token': [], 'login': [], 'return_to': [], 'note': []}

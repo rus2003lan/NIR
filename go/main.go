@@ -4,9 +4,6 @@ import (
 	"os"
 )
 
-func InitVulnItem(name string, regexps ...string) VulnItem {
-	return VulnItem{name: name, regexps: regexps}
-}
 
 const link = "https://portswigger.net/web-security/all-topics"
 const head = "https://portswigger.net"
